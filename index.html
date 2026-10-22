@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marisa Missoni – Designkonzept</title>
+<meta name="description" content="Unabhängiges Designkonzept für Marisa Missoni – die kleinste Bar &amp; Shop in Velden am Wörthersee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5EEE0; --bg2:#EBE1CE; --ink:#26211F; --muted:#5C534D;
+  --wine:#5A1424; --wine-ink:#F5EEE0; --gold:#A8883F; --line:rgba(38,33,31,.2);
+  --night:#25201F; --night-ink:#F1E9DA;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#1B1817;--bg2:#252120;--ink:#F0E8D9;--muted:#BDB2A3;--wine:#72202F;--line:rgba(240,232,217,.22);--night:#121010;--gold:#C9A75C}
+}
+:root[data-theme="dark"]{--bg:#1B1817;--bg2:#252120;--ink:#F0E8D9;--muted:#BDB2A3;--wine:#72202F;--line:rgba(240,232,217,.22);--night:#121010;--gold:#C9A75C}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+p{margin:0 0 1.1em;max-width:58ch}
+.wrap{width:min(1180px,100% - 3rem);margin-inline:auto}
+section{padding:clamp(4.5rem,10vw,8rem) 0}
+
+/* notice + header */
+.notice{background:var(--night);color:var(--night-ink);font-size:.82rem;text-align:center;padding:.55rem 1rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+.logo{font-family:var(--serif);font-size:1.45rem;font-weight:600;letter-spacing:.2em;text-decoration:none;white-space:nowrap}
+nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-size:.95rem;padding:.3rem 0;background:linear-gradient(var(--gold),var(--gold)) 0 100%/0 1px no-repeat;transition:background-size .3s}
+nav a:hover{background-size:100% 1px}
+.btn{display:inline-block;text-decoration:none;font:500 .95rem var(--sans);padding:.85rem 1.5rem;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.btn.fill{background:var(--wine);border-color:var(--wine);color:var(--wine-ink)}
+.btn.fill:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.cta{padding:.6rem 1.2rem}
+.menu{display:none}
+@media (max-width:860px){
+  .menu{display:inline-block;padding:.55rem 1rem}
+  .cta{display:none}
+  nav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:0;padding:.5rem 1.5rem 1.2rem}
+  nav li a{display:block;padding:.9rem 0;font-size:1.1rem}
+}
+
+/* placeholder imagery */
+.ph{position:relative;overflow:hidden;margin:0;color:var(--wine-ink);background:var(--wine)}
+.ph>img,.ph>svg.motif{position:absolute;inset:0;width:100%;height:100%}
+.ph>img{object-fit:cover;z-index:1;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.ph svg.motif{padding:18%;stroke:currentColor;fill:none;stroke-width:.7;opacity:.85;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.ph:hover>img,.ph:hover svg.motif{transform:scale(1.05)}
+.ph .tag{position:absolute;left:.8rem;bottom:.7rem;z-index:2;font-size:.74rem;background:rgba(0,0,0,.45);color:#fff;padding:.2rem .55rem}
+.ph.has-img .tag{display:none}
+.t-wine{background:#5A1424}.t-char{background:#2D2826;color:#E9DFCB}.t-gold{background:#B59A5B;color:#2A2118}.t-sand{background:#D9CBB0;color:#4A1020}.t-deep{background:#3C0E19}.t-ivory{background:#EDE3D0;color:#5A1424}
+
+/* hero */
+.hero{position:relative;min-height:calc(100svh - 106px);padding:0;display:flex;align-items:flex-end;color:#F5EEE0;background:#3C0E19}
+.hero .ph{position:absolute;inset:0;background:#4A101E}
+.hero .ph svg.motif{padding:6% 8% 0 40%;stroke:#C9A75C;stroke-width:.35}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(25,6,10,.38)}
+.hero .wrap{position:relative;z-index:2;padding-block:clamp(2.5rem,7vw,5.5rem)}
+.hero h1{font-size:clamp(3.4rem,10.5vw,9rem);font-weight:500;line-height:.92;margin-bottom:1.6rem}
+.hero h1 span{display:block}
+.hero p{font-size:1.2rem;max-width:34ch;color:#F5EEE0}
+.hero .btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+.hero .btn.fill{background:#F5EEE0;color:#4A101E;border-color:#F5EEE0}
+.hero .btn.fill:hover{background:#C9A75C;border-color:#C9A75C;color:#25100F}
+.hero .btn.ghost{border-color:#F5EEE0}
+.hero .btn.ghost:hover{background:#F5EEE0;color:#4A101E}
+@keyframes rise{from{opacity:0;transform:translateY(.6em)}to{opacity:1;transform:none}}
+.hero h1 span{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span:nth-child(2){animation-delay:.18s}.hero h1 span:nth-child(3){animation-delay:.36s}
+.hero p,.hero .btns{animation:rise 1s .6s cubic-bezier(.2,.7,.2,1) both}
+
+/* concept */
+.concept .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,6vw,6rem)}
+.concept h2{max-width:11ch}
+.facts{margin:2rem 0 0;padding:0;list-style:none;border-top:1px solid var(--gold)}
+.facts li{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.facts b{font:600 1.25rem var(--serif)}
+.facts span{color:var(--muted)}
+@media (max-width:860px){.concept .wrap{grid-template-columns:1fr}.facts li{grid-template-columns:1fr;gap:.2rem}}
+
+/* boutique */
+.boutique{background:var(--bg2)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.head p{margin:0;color:var(--muted)}
+.bgrid{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:auto auto;gap:1.2rem}
+.bgrid figure.big{grid-row:span 2;aspect-ratio:4/5.2}
+.bgrid .ph{aspect-ratio:auto;min-height:260px}
+.cap{position:absolute;right:1rem;top:.8rem;z-index:2;font:italic 1.35rem var(--serif);color:inherit}
+@media (max-width:760px){.bgrid{grid-template-columns:1fr}.bgrid figure.big{grid-row:auto;aspect-ratio:4/5}}
+
+/* bar */
+.bar-sec{background:var(--night);color:var(--night-ink)}
+.bar-sec .wrap{display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:clamp(2rem,7vw,7rem);align-items:center}
+.bar-sec .ph{aspect-ratio:1/2.2}
+.bar-sec h2{margin-bottom:1.6rem;max-width:12ch}
+.bar-sec p{color:#D3C8B7}
+.bar-sec .btn.fill{background:#C9A75C;border-color:#C9A75C;color:#25100F}
+.bar-sec .btn.fill:hover{background:var(--night-ink);border-color:var(--night-ink)}
+@media (max-width:700px){.bar-sec .wrap{grid-template-columns:1fr}.bar-sec .ph{aspect-ratio:3/2;max-width:none}}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(120px,17vw,230px);gap:.8rem}
+.gal .ph:nth-child(1){grid-column:span 3;grid-row:span 2}
+.gal .ph:nth-child(2){grid-column:span 3}
+.gal .ph:nth-child(3){grid-column:span 2}
+.gal .ph:nth-child(4){grid-column:span 1}
+.gal .ph:nth-child(5){grid-column:span 2}
+.gal .ph:nth-child(6){grid-column:span 4}
+@media (max-width:640px){.gal{grid-template-columns:1fr 1fr}.gal .ph:nth-child(n){grid-column:span 1;grid-row:span 1}.gal .ph:nth-child(1),.gal .ph:nth-child(6){grid-column:span 2}}
+
+/* contact */
+.contact{background:var(--wine);color:var(--wine-ink)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem)}
+.contact h2{margin-bottom:1.5rem}
+.contact address{font-style:normal;font-size:1.25rem;line-height:1.8}
+.contact address a{text-decoration-color:var(--gold);text-underline-offset:4px}
+.contact .note{font-size:.95rem;color:#E4D6C4;margin-top:1.2rem}
+.contact .acts{display:flex;flex-direction:column;gap:.8rem;align-content:center;align-self:center}
+.contact .btn{text-align:center;border-color:#F5EEE0;padding:1.05rem 1.5rem}
+.contact .btn:hover{background:#F5EEE0;color:var(--wine)}
+@media (max-width:760px){.contact .wrap{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--night);color:var(--night-ink);padding:4rem 0 2.5rem;font-size:.95rem}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.5rem}
+footer h3{font:600 1.1rem var(--serif);margin-bottom:.8rem}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin:.3rem 0}
+footer a{text-decoration:none;color:#D3C8B7}
+footer a:hover{color:#fff;text-decoration:underline}
+.legal{margin-top:2.5rem;padding:1.2rem 1.4rem;border:1px dashed #C9A75C;color:#E3D8C6;max-width:none}
+@media (max-width:760px){footer .cols{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="arch" viewBox="0 0 100 100"><path d="M18 96V44a32 32 0 0 1 64 0v52zM28 96V46a22 22 0 0 1 44 0v50zM50 24v72M28 62h44"/></symbol>
+  <symbol id="hanger" viewBox="0 0 100 100"><path d="M46 30a6 6 0 1 1 7 6l-3 4L10 70h80L50 40"/><path d="M10 70v6h80v-6"/></symbol>
+  <symbol id="bag" viewBox="0 0 100 100"><path d="M24 38h52l5 54H19zM38 38v-8a12 12 0 0 1 24 0v8M40 54a10 10 0 0 0 20 0"/></symbol>
+  <symbol id="dress" viewBox="0 0 100 100"><path d="M40 10l10 10 10-10 6 20-8 12 14 50H28l14-50-8-12zM42 42h16"/></symbol>
+  <symbol id="glass" viewBox="0 0 100 100"><path d="M26 18h48L50 54zM50 54v32M34 86h32M33 30h34"/></symbol>
+  <symbol id="bottle" viewBox="0 0 100 100"><path d="M44 8h12v20l9 14v50H35V42l9-14zM35 60h30"/></symbol>
+</svg>
+
+<div class="notice">Unabhängiges Designkonzept zu Demonstrationszwecken – nicht die offizielle Website des Unternehmens.</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" data-go="top">MARISA MISSONI</a>
+    <nav id="nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#boutique" data-go="boutique">Boutique</a></li>
+        <li><a href="#bar" data-go="bar">Die Bar</a></li>
+        <li><a href="#impressionen" data-go="impressionen">Impressionen</a></li>
+        <li><a href="#kontakt" data-go="kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a class="btn fill cta" href="#kontakt" data-go="kontakt">Kontakt aufnehmen</a>
+    <button class="btn menu" id="menu" aria-expanded="false" aria-controls="nav">Menü</button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="h-hero">
+  <figure class="ph" data-photo="hero"><svg class="motif" aria-hidden="true"><use href="#arch"/></svg><span class="tag">Platzhalter – Foto folgt</span></figure>
+  <div class="wrap">
+    <h1 id="h-hero"><span>Klein.</span><span>Fein.</span><span>Unvergesslich.</span></h1>
+    <p>Besondere Lieblingsstücke, gute Drinks und persönliche Momente – mitten in Velden am Wörthersee.</p>
+    <div class="btns">
+      <a class="btn fill" href="#boutique" data-go="boutique">Die Boutique entdecken</a>
+      <a class="btn ghost" href="#bar" data-go="bar">Die Bar erleben</a>
+    </div>
+  </div>
+</section>
+
+<!-- KONZEPT -->
+<section class="concept" aria-labelledby="h-concept">
+  <div class="wrap">
+    <h2 id="h-concept">Zwei Welten auf kleinstem Raum.</h2>
+    <div>
+      <p>Hier trifft eine Boutique auf eine Bar – und beides gehört zusammen. Man kommt zum Stöbern und bleibt auf ein Glas. Oder umgekehrt.</p>
+      <p>Der Ort ist klein, und genau deshalb persönlich: Man wird wahrgenommen, beraten und willkommen geheißen, nicht abgefertigt.</p>
+      <ul class="facts">
+        <li><b>Individuell</b><span>Besondere Fundstücke statt Massenware.</span></li>
+        <li><b>Atmosphäre</b><span>Ein Raum mit eigener Handschrift am Seecorso.</span></li>
+        <li><b>Persönlich</b><span>Gastgeberin und Gäste auf Augenhöhe.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BOUTIQUE -->
+<section class="boutique" id="boutique" aria-labelledby="h-boutique">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-boutique">Die Boutique</h2>
+      <p>Besondere Fundstücke aus Mode, Accessoires und Lifestyle – persönlich ausgewählt und im Gespräch gefunden.</p>
+    </div>
+    <div class="bgrid">
+      <figure class="ph big t-wine" data-photo="b1"><svg class="motif" aria-hidden="true"><use href="#dress"/></svg><span class="cap">Mode</span><span class="tag">Platzhalter</span></figure>
+      <figure class="ph t-sand" data-photo="b2"><svg class="motif" aria-hidden="true"><use href="#bag"/></svg><span class="cap">Accessoires</span><span class="tag">Platzhalter</span></figure>
+      <figure class="ph t-char" data-photo="b3"><svg class="motif" aria-hidden="true"><use href="#hanger"/></svg><span class="cap">Lifestyle</span><span class="tag">Platzhalter</span></figure>
+    </div>
+  </div>
+</section>
+
+<!-- BAR -->
+<section class="bar-sec" id="bar" aria-labelledby="h-bar">
+  <div class="wrap">
+    <figure class="ph t-deep" data-photo="bar"><svg class="motif" aria-hidden="true"><use href="#glass"/></svg><span class="tag">Platzhalter</span></figure>
+    <div>
+      <h2 id="h-bar">Ein kleiner Ort mit großer Atmosphäre.</h2>
+      <p>Gute Drinks, passende Musik und ein Raum, in dem man schnell ins Gespräch kommt. Die kleinste Bar am Seecorso lädt dazu ein, den Abend ohne Eile zu beginnen – oder ausklingen zu lassen.</p>
+      <a class="btn fill" href="#kontakt" data-go="kontakt">Den Ort entdecken</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPRESSIONEN -->
+<section id="impressionen" aria-labelledby="h-imp">
+  <div class="wrap">
+    <div class="head"><h2 id="h-imp">Impressionen</h2><p>Platzhalter, bis freigegebene Fotos des Geschäfts vorliegen.</p></div>
+    <div class="gal">
+      <figure class="ph t-wine" data-photo="g1"><svg class="motif" aria-hidden="true"><use href="#arch"/></svg><span class="tag">Platzhalter 1</span></figure>
+      <figure class="ph t-gold" data-photo="g2"><svg class="motif" aria-hidden="true"><use href="#bottle"/></svg><span class="tag">Platzhalter 2</span></figure>
+      <figure class="ph t-char" data-photo="g3"><svg class="motif" aria-hidden="true"><use href="#glass"/></svg><span class="tag">Platzhalter 3</span></figure>
+      <figure class="ph t-ivory" data-photo="g4"><svg class="motif" aria-hidden="true"><use href="#hanger"/></svg><span class="tag">Platzhalter 4</span></figure>
+      <figure class="ph t-deep" data-photo="g5"><svg class="motif" aria-hidden="true"><use href="#bag"/></svg><span class="tag">Platzhalter 5</span></figure>
+      <figure class="ph t-sand" data-photo="g6"><svg class="motif" aria-hidden="true"><use href="#dress"/></svg><span class="tag">Platzhalter 6</span></figure>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact" id="kontakt" aria-labelledby="h-kontakt">
+  <div class="wrap">
+    <div>
+      <h2 id="h-kontakt">Besuchen Sie uns.</h2>
+      <address>
+        Marisa Missoni – die kleinste Bar &amp; Shop<br>
+        Seecorso 1<br>9220 Velden am Wörthersee<br>
+        <a href="tel:+436641403451">+43 664 1403451</a><br>
+        <a href="mailto:marisa-missoni@gmx.at">marisa-missoni@gmx.at</a>
+      </address>
+      <p class="note">Öffnungszeiten bitte direkt beim Geschäft erfragen.</p>
+    </div>
+    <div class="acts">
+      <a class="btn" href="tel:+436641403451">Anrufen</a>
+      <a class="btn" href="mailto:marisa-missoni@gmx.at">E-Mail schreiben</a>
+      <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Seecorso+1%2C+9220+Velden+am+W%C3%B6rthersee" target="_blank" rel="noopener">Route in Karten öffnen</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>Marisa Missoni – die kleinste Bar &amp; Shop</h3>
+        <p>Seecorso 1<br>9220 Velden am Wörthersee</p>
+      </div>
+      <div>
+        <h3>Seiten</h3>
+        <ul>
+          <li><a href="#boutique" data-go="boutique">Boutique</a></li>
+          <li><a href="#bar" data-go="bar">Die Bar</a></li>
+          <li><a href="#impressionen" data-go="impressionen">Impressionen</a></li>
+          <li><a href="#kontakt" data-go="kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li><a href="tel:+436641403451">+43 664 1403451</a></li>
+          <li><a href="mailto:marisa-missoni@gmx.at">marisa-missoni@gmx.at</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal" id="rechtliches"><strong>Rechtliche Angaben (Platzhalter):</strong> Impressum und Datenschutzerklärung sind hier einzufügen. Beides muss vor einer öffentlichen Veröffentlichung vollständig ergänzt und rechtlich geprüft werden. Dieses Konzept ist unabhängig entstanden und wurde vom Unternehmen weder beauftragt noch freigegeben.</p>
+  </div>
+</footer>
+
+<script>
+/* ===== Fotos austauschen =====
+   Eintrag unten ausfüllen: src = Bilddatei (z. B. "bilder/hero.jpg"), alt = Beschreibung.
+   Leerer src = Platzhalter bleibt sichtbar. Nur Fotos mit Freigabe verwenden. */
+var PHOTOS = {
+  hero:{src:"",alt:"Stimmungsvoller Innenraum der Boutique und Bar"},
+  b1:{src:"",alt:"Mode in der Boutique"},
+  b2:{src:"",alt:"Accessoires in der Boutique"},
+  b3:{src:"",alt:"Lifestyle-Stücke in der Boutique"},
+  bar:{src:"",alt:"Die kleine Bar am Abend"},
+  g1:{src:"",alt:"Eindruck 1"},g2:{src:"",alt:"Eindruck 2"},g3:{src:"",alt:"Eindruck 3"},
+  g4:{src:"",alt:"Eindruck 4"},g5:{src:"",alt:"Eindruck 5"},g6:{src:"",alt:"Eindruck 6"}
+};
+document.querySelectorAll("[data-photo]").forEach(function(f){
+  var p=PHOTOS[f.dataset.photo]; if(!p)return;
+  if(p.src){
+    var i=new Image(); i.src=p.src; i.alt=p.alt; i.loading="lazy";
+    f.classList.add("has-img"); f.prepend(i);
+  } else {
+    f.setAttribute("role","img"); f.setAttribute("aria-label",p.alt+" (Platzhalter)");
+  }
+});
+
+/* Navigation */
+var nav=document.getElementById("nav"), menu=document.getElementById("menu");
+menu.addEventListener("click",function(){
+  var o=nav.classList.toggle("open"); menu.setAttribute("aria-expanded",o);
+});
+var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.querySelectorAll("[data-go]").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var t=document.getElementById(a.dataset.go); if(!t)return;
+    nav.classList.remove("open"); menu.setAttribute("aria-expanded","false");
+    t.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
+  });
+});
+</script>
+</body>
+</html>
